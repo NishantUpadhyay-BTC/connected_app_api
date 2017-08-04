@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803071935) do
+ActiveRecord::Schema.define(version: 20170803100731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20170803071935) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_blacklists_on_jti"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "facebook_url"
+    t.string "snapchat_url"
+    t.string "instagram_url"
+    t.date "birth_date"
+    t.boolean "display_phone_number"
+    t.boolean "display_facebook"
+    t.boolean "display_snapchat"
+    t.boolean "display_instagram"
+    t.boolean "display_age"
+    t.boolean "display_profile"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

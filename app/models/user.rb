@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
+  has_one :profile
 
-  def assign_jwt_token
-    Auth.issue({user: id})
-  end
 end

@@ -12,6 +12,7 @@ module V1
           set_flash_message :notice, :signed_up if is_flashing_format?
           msg = find_message(:signed_up, {})
           sign_up(resource_name, resource)
+          resource.profile = Profile.new(profile_params)
           respond_to do |format|
             format.json { render json: { data: { user: resource} }, status: 200 }
           end
@@ -29,6 +30,22 @@ module V1
           format.json { render json: {data: { message: resource.errors.full_messages }}, status: 401 }
         end
       end
+    end
+
+    private
+
+    def profile_params
+      params.require(:profile).permit(:phone_number,
+                                      :facebook_url,
+                                      :snapchat_url,
+                                      :instagram_url,
+                                      :birth_date,
+                                      :display_phone_number,
+                                      :display_facebook,
+                                      :display_snapchat,
+                                      :display_instagram,
+                                      :display_age,
+                                      :display_profile)
     end
   end
 end
