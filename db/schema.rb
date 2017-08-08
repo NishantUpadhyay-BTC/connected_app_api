@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808072123) do
+ActiveRecord::Schema.define(version: 20170808120037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170808072123) do
     t.string "last_name"
     t.float "latitude"
     t.float "longitude"
+    t.string "avatar"
     t.index ["latitude"], name: "index_profiles_on_latitude"
     t.index ["longitude"], name: "index_profiles_on_longitude"
   end
