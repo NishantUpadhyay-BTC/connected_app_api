@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170808120037) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
     t.float "latitude"
     t.float "longitude"
+    t.string "first_name"
+    t.string "last_name"
     t.string "avatar"
     t.index ["latitude"], name: "index_profiles_on_latitude"
     t.index ["longitude"], name: "index_profiles_on_longitude"
