@@ -13,10 +13,17 @@ module V1
 
     # GET /users/:id/near_by_users
     def near_by_users
-      results = @user.near_by_me(point,distance,unit)
-      respond_to do |format|
-        format.json { render json: { data: { user: results }}, status: 200 }
+      begin
+        results = @user.near_by_me(params)
+        respond_to do |format|
+          format.json { render json: { data: { user: results }}, status: 200 }
+        end
+      rescue TypeError => e
+        respond_to do |format|
+          format.json { render json: { data: { error: e }}, status: 422 }
+        end
       end
+
     end
 
     # PUT /users/:id/update_location
@@ -42,18 +49,6 @@ module V1
 
     def set_user
       @user = User.find(params[:id]) if params[:id]
-    end
-
-    def point
-      [params[:latitude].to_f,params[:longitude].to_f]
-    end
-
-    def distance
-      params[:distance].to_f
-    end
-
-    def unit
-      params[:unit]
     end
   end
 end

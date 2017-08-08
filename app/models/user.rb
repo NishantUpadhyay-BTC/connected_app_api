@@ -16,10 +16,16 @@ class User < ApplicationRecord
   end
 
 
-  def near_by_me(point,distance,unit)
+  def near_by_me(params)
+    point = point(params)
+    unit = params[:unit].to_sym if params[:unit]
+    distance = params[:distance].to_f if params[:distance]
     users_within_location =
-                Profile.near(point, distance.to_f, :units => unit.to_sym,:order => '')
+                Profile.near(point, distance, :units => unit,:order => '')
                 .reject{|profile| profile.user_id == id }
   end
 
+  def point(params)
+    [params[:latitude].to_f,params[:longitude].to_f]
+  end
 end
