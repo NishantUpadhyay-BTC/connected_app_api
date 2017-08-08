@@ -1,6 +1,6 @@
 module V1
   class UsersController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: %i[terms_of_use data_protection]
     before_action :set_user, only: [:near_by_users,:update_location]
 
     def show
@@ -64,6 +64,12 @@ module V1
         message = 'Unable to delete user'
       end
       render json: { message: message }
+    end
+
+    def terms_of_use
+    end
+
+    def data_protection
     end
 
     private

@@ -6,6 +6,7 @@ class ApiConstraint
   end
 
   def matches?(request)
+    return true if request.url.match(/terms_of_use|data_protection/)
     request
       .headers
       .fetch(:version)

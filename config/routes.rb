@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
     get '/users/:id/near_by_users' => 'users#near_by_users'
     put '/users/:id/update_location' => 'users#update_location'
+    get '/users/terms_of_use' => 'users#terms_of_use'
+    get '/users/data_protection' => 'users#data_protection'
 
-    resources :users, only: :show
     scope :users do
       resources :favorites
     end
