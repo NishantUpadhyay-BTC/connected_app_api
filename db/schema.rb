@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804092904) do
+ActiveRecord::Schema.define(version: 20170808072123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20170804092904) do
     t.string "snapchat_url"
     t.string "instagram_url"
     t.date "birth_date"
-    t.boolean "display_phone_number"
-    t.boolean "display_facebook"
-    t.boolean "display_snapchat"
-    t.boolean "display_instagram"
-    t.boolean "display_age"
-    t.boolean "display_profile"
+    t.boolean "display_phone_number", default: true
+    t.boolean "display_facebook", default: true
+    t.boolean "display_snapchat", default: true
+    t.boolean "display_instagram", default: true
+    t.boolean "display_age", default: true
+    t.boolean "display_profile", default: true
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

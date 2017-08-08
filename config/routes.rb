@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     get '/users/favorite/:id' => 'users#favorite'
     get '/users/favorites_list' => 'users#favorites_list'
-    resources :users, only: :show
+    resources :users, only: [:show, :edit, :update, :destroy]
     resources :profiles
   end
 end

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
-  has_one :profile
+
+  has_one :profile, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -12,7 +13,8 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
 
-  has_many :favorites, through: :active_relationships, source: :followed
+  has_many :favorites, through: :active_relationships, source: :followed,
+    dependent: :destroy
   # has_many :followers, through: :passive_relationships, source: :follower
 
   # Follows a user.
