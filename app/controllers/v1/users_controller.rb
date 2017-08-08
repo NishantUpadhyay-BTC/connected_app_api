@@ -11,12 +11,14 @@ module V1
       }
     end
 
+    # METHOD NOT IN USE NOW.
+    # IT WILL CREATE USER FROM FACEBOOK LOGIN PAYLOD
     def create
       @user = User.from_payload(params)
 
       if @user.persisted? && !@user.profile
         @user.profile = Profile.create!(profile_params)
-        response.headers["Authorization"] = @user.auth_token
+        response.headers["Authorization"] = @user.fb_token
       end
       respond_to do |format|
         format.json { render json: { data: { user: @user }}, status: 200 }
