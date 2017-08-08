@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 20170808072123) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["latitude"], name: "index_profiles_on_latitude"
+    t.index ["longitude"], name: "index_profiles_on_longitude"
   end
 
   create_table "relationships", force: :cascade do |t|
