@@ -13,8 +13,7 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
 
-  has_many :favorites, through: :active_relationships, source: :followed,
-    dependent: :destroy
+  has_many :favorites, through: :active_relationships, source: :followed
   # has_many :followers, through: :passive_relationships, source: :follower
 
   # TEMP METHOD FOR FB TOKEN MANAGEMENT
