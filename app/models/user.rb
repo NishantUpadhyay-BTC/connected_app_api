@@ -29,4 +29,12 @@ class User < ApplicationRecord
   def favorited?(other_user)
     favorites.pluck(:email).include?(other_user.email)
   end
+
+  def username
+    if profile.present?
+      "#{profile.first_name} #{profile.last_name}"
+    else
+      self.email
+    end
+  end
 end
