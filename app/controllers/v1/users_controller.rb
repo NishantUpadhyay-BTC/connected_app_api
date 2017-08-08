@@ -1,6 +1,6 @@
 module V1
   class UsersController < ApplicationController
-    before_action :authenticate_user!, except: %i[terms_of_use data_protection]
+    before_action :authenticate_user!, except: %i[terms_of_use data_protection create]
     before_action :set_user, only: [:near_by_users,:update_location]
 
     def show
@@ -9,6 +9,18 @@ module V1
       render json: {
         profile: profile
       }
+    end
+
+    def create
+      @user = User.from_payload(params)
+
+      if @user.persisted? && !@user.profile
+        @user.profile = Profile.create!(profile_params)
+        response.headers["Authorization"] = @user.auth_token
+      end
+      respond_to do |format|
+        format.json { render json: { data: { user: @user }}, status: 200 }
+      end
     end
 
     # GET /users/:id/near_by_users
@@ -80,14 +92,6 @@ module V1
         :display_phone_number, :display_facebook, :display_snapchat,
         :display_instagram, :display_age, :display_profile)
     end
-
-    private
-
-    def set_user
-      @user = User.find(params[:id]) if params[:id]
-    end
-
-    private
 
     def set_user
       @user = User.find(params[:id]) if params[:id]

@@ -12,10 +12,11 @@ Rails.application.routes.draw do
     get '/users/terms_of_use' => 'users#terms_of_use'
     get '/users/data_protection' => 'users#data_protection'
 
+    #resources :users, only: :show
     scope :users do
       resources :favorites
     end
-    resources :users, only: [:show, :edit, :update, :destroy]
+    resources :users, only: [:show, :edit, :update, :destroy,:create]
     resources :profiles
   end
 end
