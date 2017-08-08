@@ -6,6 +6,9 @@ Rails.application.routes.draw do
         sessions: 'v1/users/sessions',
         registrations: 'v1/users/registrations'
       }
+
+    get '/users/favorite/:id' => 'users#favorite'
+    get '/users/favorites_list' => 'users#favorites_list'
     resources :users, only: :show
     resources :profiles
   end
