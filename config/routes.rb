@@ -6,6 +6,10 @@ Rails.application.routes.draw do
         sessions: 'v1/users/sessions',
         registrations: 'v1/users/registrations'
       }
+
+    get '/users/:id/near_by_users' => 'users#near_by_users'
+    put '/users/:id/update_location' => 'users#update_location'
+
     resources :users, only: :show
     resources :profiles
   end
