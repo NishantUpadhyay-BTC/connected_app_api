@@ -16,7 +16,7 @@ module V1
       begin
         results = @user.near_by_me(params)
         respond_to do |format|
-          format.json { render json: { data: { user: results }}, status: 200 }
+          format.json { render json: { data: { profiles: results }}, status: 200 }
         end
       rescue TypeError => e
         respond_to do |format|
@@ -32,9 +32,9 @@ module V1
 
       respond_to do |format|
         if response == true
-          format.json { render json: { data: { response: response }}, status: 200 }
+          format.json { render json: { data: { updated: response }}, status: 200 }
         else
-          format.json { render json: { data: { response: response }}, status: 422 }
+          format.json { render json: { data: { updated: response }}, status: 422 }
         end
       end
     end
