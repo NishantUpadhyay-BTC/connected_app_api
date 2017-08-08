@@ -4,18 +4,19 @@ module V1
     before_action :assign_other_user, only: [:create, :destroy]
 
     def index
-      favorited_users = current_user.favorites
+      favorited_users = current_user.favorites.zip(current_user.active_relationships)
       user_favorites = []
-      favorited_users.each_with_index do |user, index|
+      favorited_users.each do |user, relationship|
         user_favorites << {
           user.id => {
               name: user.username,
-              favorited_at: Relationship.where(follower_id: current_user.id, followed_id: user.id).first.created_at
+              favorited_at: relationship.created_at
             }
           }
       end
       render json: {favorited_users: user_favorites}
     end
+
     def create
       if current_user.favorite(@other_user)
         message = 'User added to your favorites list.'
