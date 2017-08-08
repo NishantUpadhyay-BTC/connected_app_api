@@ -7,6 +7,10 @@ Rails.application.routes.draw do
         registrations: 'v1/users/registrations'
       }
 
+    get '/users/:id/near_by_users' => 'users#near_by_users'
+    put '/users/:id/update_location' => 'users#update_location'
+
+    resources :users, only: :show
     scope :users do
       resources :favorites
     end
