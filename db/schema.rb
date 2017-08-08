@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808064734) do
+ActiveRecord::Schema.define(version: 20170808072123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,19 +28,31 @@ ActiveRecord::Schema.define(version: 20170808064734) do
     t.string "snapchat_url"
     t.string "instagram_url"
     t.date "birth_date"
-    t.boolean "display_phone_number"
-    t.boolean "display_facebook"
-    t.boolean "display_snapchat"
-    t.boolean "display_instagram"
-    t.boolean "display_age"
-    t.boolean "display_profile"
+    t.boolean "display_phone_number", default: true
+    t.boolean "display_facebook", default: true
+    t.boolean "display_snapchat", default: true
+    t.boolean "display_instagram", default: true
+    t.boolean "display_age", default: true
+    t.boolean "display_profile", default: true
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["latitude"], name: "index_profiles_on_latitude"
     t.index ["longitude"], name: "index_profiles_on_longitude"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|

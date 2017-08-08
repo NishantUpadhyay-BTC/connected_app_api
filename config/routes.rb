@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     put '/users/:id/update_location' => 'users#update_location'
 
     resources :users, only: :show
+    scope :users do
+      resources :favorites
+    end
+    resources :users, only: [:show, :edit, :update, :destroy]
     resources :profiles
   end
 end
