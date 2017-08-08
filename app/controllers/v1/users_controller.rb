@@ -39,10 +39,6 @@ module V1
 
     private
 
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
-
     def profile_params
       params.require(:profile).permit(:first_name, :last_name, :phone_number,
         :facebook_url, :snapchat_url, :instagram_url, :birth_date,

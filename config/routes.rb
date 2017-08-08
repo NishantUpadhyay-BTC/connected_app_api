@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     scope :users do
       resources :favorites
     end
-    get '/users/favorite/:id' => 'users#favorite'
-    get '/users/favorites_list' => 'users#favorites_list'
     resources :users, only: [:show, :edit, :update, :destroy]
     resources :profiles
   end
