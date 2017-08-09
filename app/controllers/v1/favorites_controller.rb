@@ -43,7 +43,7 @@ module V1
 
     def assign_other_user
       @other_user = User.find params[:id]
-      render json: { message: 'No user found' } and return unless @other_user.present?
+      render json: { message: t('user.not_found') } and return unless @other_user.present?
     end
   end
 end

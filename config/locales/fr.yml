@@ -1,0 +1,13 @@
+en:
+  user:
+    update: "L'utilisateur a été mis à jour avec succès."
+    unable_to_update: 'Impossible de mettre à jour cet utilisateur.'
+    delete: "L'utilisateur a été supprimé avec succès."
+    unable_to_delete: 'Impossible de supprimer cet utilisateur.'
+    not_found: 'Aucun utilisateur trouvé.'
+  favorite:
+    add: 'Utilisateur ajouté à votre liste de favoris.'
+    unable_to_add: 'Impossible de favoriser cet utilisateur.'
+    remove: "L'utilisateur est supprimé de la liste des favoris."
+    unable_to_remove: "Impossible de supprimer l'utilisateur de la liste de favoris."
+    not_favorited: "L'utilisateur n'est pas favorisé."

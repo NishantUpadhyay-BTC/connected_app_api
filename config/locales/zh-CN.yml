@@ -1,0 +1,13 @@
+en:
+  user:
+    update: "用户更新成功。"
+    unable_to_update: "无法更新此用户。"
+    delete: "用户已成功删除。"
+    unable_to_delete: "无法删除此用户。"
+    not_found: "找不到用户"
+  favorite:
+    add: "用户已添加到收藏夹列表。"
+    unable_to_add: "无法收藏此用户。"
+    remove: "用户从最喜爱的列表中删除。"
+    unable_to_remove: "无法从最爱列表中删除用户。"
+    not_favorited: "用户不喜欢"

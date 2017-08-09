@@ -40,9 +40,9 @@ module V1
 
     def update
       if current_user.profile.present? && current_user.profile.update_attributes(profile_params)
-        message = 'User updated successfully.'
+        message = t('user.update')
       else
-        message = 'not updated'
+        message = t('user.unable_to_update')
       end
       render json: {
         user: current_user,
@@ -53,9 +53,9 @@ module V1
 
     def destroy
       if current_user.destroy
-        message = 'User deleted successfully.'
+        message = t('user.delete')
       else
-        message = 'Unable to delete user'
+        message = t('user.unable_to_delete')
       end
       render json: { message: message }
     end
@@ -84,7 +84,7 @@ module V1
                                       :display_instagram,
                                       :display_age,
                                       :display_profile,
-                                      :language)
+                                      :locale)
     end
   end
 end
