@@ -14,20 +14,20 @@ module V1
           sign_up(resource_name, resource)
           resource.profile = Profile.new(profile_params)
           respond_to do |format|
-            format.json { render json: { data: { user: resource} }, status: 200 }
+            format.json { render json: { data: { user: resource } }, status: 200 }
           end
         else
           set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
           msg = find_message(:"signed_up_but_#{resource.inactive_message}", {})
           expire_data_after_sign_in!
           respond_with(resource) do |format|
-            format.json { render json: {message: msg }, status: 200 }
+            format.json { render json: { message: msg }, status: 200 }
           end
         end
       else
         clean_up_passwords resource
         respond_to do |format|
-          format.json { render json: {data: { message: resource.errors.full_messages }}, status: 401 }
+          format.json { render json: { data: { message: resource.errors.full_messages } }, status: 401 }
         end
       end
     end

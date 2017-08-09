@@ -8,7 +8,7 @@ module V1
       set_flash_message(:notice, :signed_in) if is_flashing_format?
       sign_in(resource_name, resource)
       respond_to do |format|
-        format.json { render json: { data: { user: self.resource }}, status: 200 }
+        format.json { render json: { data: { user: self.resource } }, status: 200 }
       end
     end
   end
