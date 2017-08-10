@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'devise-jwt', '~> 0.3.0'
+gem 'carrierwave', '~> 1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -27,8 +28,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'fcm'
 gem 'geocoder'
-gem 'carrierwave', '~> 1.0'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 gem 'omniauth-facebook'
 gem 'omniauth-jwt'

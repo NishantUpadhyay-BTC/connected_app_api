@@ -91,6 +91,9 @@ GEM
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    fcm (0.0.2)
+      httparty
+      json
     ffi (1.9.18)
     flay (2.10.0)
       erubis (~> 2.7.0)
@@ -314,6 +317,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-jwt (~> 0.3.0)
+  fcm
   geocoder
   jbuilder (~> 2.5)
   jwt
