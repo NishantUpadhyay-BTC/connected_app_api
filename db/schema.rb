@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170809091559) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
-    t.string "token"
+    t.string "uid"
     t.string "platform"
     t.string "device_id"
     t.index ["email"], name: "index_users_on_email", unique: true

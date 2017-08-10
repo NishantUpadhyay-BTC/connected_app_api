@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   scope module: :v1, constraints: ApiConstraint.new(version: 1) do
     devise_for :users, controllers: {
       sessions: 'v1/users/sessions',
-      registrations: 'v1/users/registrations'
+      registrations: 'v1/users/registrations',
+      omniauth_callbacks: 'v1/users/omniauth_callbacks'
     }
 
     get '/users/:id/near_by_users' => 'users#near_by_users'
