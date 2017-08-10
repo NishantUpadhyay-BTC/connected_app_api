@@ -84,7 +84,10 @@ module V1
                                       :display_instagram,
                                       :display_age,
                                       :display_profile,
-                                      :locale)
+                                      :locale,
+                                      :avatar,
+                                      :latitude,
+                                      :longitude)
     end
   end
 end
