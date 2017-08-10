@@ -3,6 +3,9 @@ module V1
     before_action :authenticate_user!, except: %i[terms_of_use data_protection]
     before_action :set_user, only: %i[near_by_users update_location]
 
+    def home_page
+    end
+
     def show
       user = User.find(params[:id])
       profile = user.profile
