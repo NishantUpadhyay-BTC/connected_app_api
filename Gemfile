@@ -34,6 +34,7 @@ gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 gem 'omniauth-facebook'
 gem 'omniauth-jwt'
 gem 'jwt'
+gem 'rails_12factor', group: :production
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
