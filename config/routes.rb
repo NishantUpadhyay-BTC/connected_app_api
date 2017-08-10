@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'profiles/show'
 
   scope module: :v1, constraints: ApiConstraint.new(version: 1) do
+    root 'users#terms_of_use'
     devise_for :users, controllers: {
       sessions: 'v1/users/sessions',
       registrations: 'v1/users/registrations',
