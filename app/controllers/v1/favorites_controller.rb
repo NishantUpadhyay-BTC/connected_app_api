@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module V1
   class FavoritesController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate
     before_action :assign_other_user, only: %i[create destroy]
 
     def index
@@ -8,10 +10,9 @@ module V1
       user_favorites = []
       favorited_users.each do |user, relationship|
         user_favorites << {
-          user.id => {
-            name: user.username,
-            favorited_at: relationship.created_at
-          }
+          user_id: user.id,
+          name: user.username,
+          favorited_at: relationship.created_at
         }
       end
       render json: { favorited_users: user_favorites }
