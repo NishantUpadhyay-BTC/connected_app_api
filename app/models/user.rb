@@ -21,7 +21,7 @@ class User < ApplicationRecord
     where(provider: auth_details[:provider],
           uid: auth_details[:uid]).first_or_create do |user|
       user.email = auth_details[:email]
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
       user.platform = auth_details[:platform]
       user.device_id = auth_details[:device_id]
       user.profile = Profile.new(first_name: auth_details[:first_name], last_name: auth_details[:last_name])

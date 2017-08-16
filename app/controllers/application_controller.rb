@@ -15,26 +15,22 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    if auth_present?
-      req = request.headers.fetch("HTTP_AUTHORIZATION").split(' ').last
-      if req.present?
-        if JsonWebToken.decode(req).first['user_id'].present?
-          user = User.find(JsonWebToken.decode(req).first['user_id'])
-          @current_user ||= user if user
-        end
-      end
-    end
+    return unless auth_present?
+    req = request.headers.fetch('HTTP_AUTHORIZATION').split(' ').last
+    return unless req.present? && JsonWebToken.decode(req).first['user_id'].present?
+    user = User.find(JsonWebToken.decode(req).first['user_id'])
+    @current_user ||= user if user
   end
 
   def authenticate
-   render json: {error: "unauthorized"}, status: 401 unless logged_in?
+    render json: { error: 'unauthorized' }, status: 401 unless logged_in?
   end
 
   private
 
-  def token
-    request.env["HTTP_AUTHORIZATION"]
-  end
+  # def token
+  #   request.env['HTTP_AUTHORIZATION']
+  # end
 
   def auth_present?
     !!request.headers['HTTP_AUTHORIZATION'].present?

@@ -6,7 +6,7 @@ module V1
 
       if @user.persisted?
         sign_in(:user, @user)
-        auth_token = JsonWebToken.encode({user_id: @user.id})
+        auth_token = JsonWebToken.encode({ user_id: @user.id })
         response.headers['Authorization'] = "Bearer #{auth_token}"
         respond_to do |format|
           format.json { render json: { data: { user: @user } }, status: 200 }

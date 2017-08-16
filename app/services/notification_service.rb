@@ -4,8 +4,6 @@ class NotificationService
     fcm_client.send([device_token], { 'priority': 'high', 'notification': notification_json})
   end
 
-  private
-
   def self.fcm_client
     FCM.new(ENV['FCM_KEY'])
   end
