@@ -13,6 +13,9 @@ class User < ApplicationRecord
                                   foreign_key: 'follower_id',
                                   dependent:   :destroy
   has_many :favorites, through: :active_relationships, source: :followed
+  validates_presence_of   :email, if: :email_required?
+  validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
+  validates_uniqueness_of :email, allow_blank: true
 
   def self.from_omniauth(auth_details)
     where(provider: auth_details[:provider],
@@ -21,7 +24,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.platform = auth_details[:platform]
       user.device_id = auth_details[:device_id]
-      user.profile = Profile.new(first_name: auth_details[:first_name], last_name: auth_details[:first_name])
+      user.profile = Profile.new(first_name: auth_details[:first_name], last_name: auth_details[:last_name])
       user.save
     end
   end
@@ -60,5 +63,11 @@ class User < ApplicationRecord
     else
       self.email
     end
+  end
+
+  protected
+
+  def email_required?
+    false
   end
 end
