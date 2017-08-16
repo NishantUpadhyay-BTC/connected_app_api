@@ -25,14 +25,9 @@ module V1
 
     # PUT /users/:id/update_location
     def update_location
-      response = @user.profile.update_attributes(latitude: params[:latitude].to_f, longitude: params[:longitude].to_f) if @user.profile
-
+      response = @user.profile.update_attributes(latitude: params[:location_details][:latitude].to_f, longitude: params[:location_details][:longitude].to_f) if @user.profile
       respond_to do |format|
-        if response == true
-          format.json { render json: { data: { updated: response } }, status: 200 }
-        else
-          format.json { render json: { data: { updated: response } }, status: 422 }
-        end
+        format.json { render json: { data: { updated: response } } }
       end
     end
 

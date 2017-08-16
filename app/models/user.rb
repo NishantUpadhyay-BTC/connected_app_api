@@ -30,16 +30,17 @@ class User < ApplicationRecord
   end
 
   def near_by_me(params)
-    point = point(params)
-    unit = params[:unit].to_sym if params[:unit]
-    distance = params[:distance].to_f if params[:distance]
-    users_within_location =
-                Profile.near(point, distance, units: unit, order: '')
+    # unit = params[:unit].to_sym if params[:unit]
+    unit = :km
+    distance = params[:location_details][:distance].to_f if params[:location_details][:distance]
+    user_profiles_within_location =
+                Profile.near(point(params[:location_details]), distance, units: unit, order: '')
                        .reject{ |profile| profile.user_id == id }
-  end
-
-  def point(params)
-    [params[:latitude].to_f, params[:longitude].to_f]
+    profiles = []
+    user_profiles_within_location.each do |profile|
+      profiles << profile.basic_details
+    end
+    profiles
   end
 
   # Follows a user.
@@ -69,5 +70,11 @@ class User < ApplicationRecord
 
   def email_required?
     false
+  end
+
+  private
+
+  def point(location_details)
+    [location_details[:latitude].to_f, location_details[:longitude].to_f]
   end
 end
