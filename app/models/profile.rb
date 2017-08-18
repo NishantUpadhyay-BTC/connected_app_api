@@ -2,7 +2,6 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   geocoded_by latitude: :latitude, longitude: :longitude
-  mount_uploader :avatar, AvatarUploader
 
   def basic_details
     {
@@ -11,7 +10,7 @@ class Profile < ApplicationRecord
       last_name: last_name,
       latitude: latitude,
       longitude: longitude,
-      avatar_url: '',
+      avatar: avatar,
       visibility: 1
     }
   end

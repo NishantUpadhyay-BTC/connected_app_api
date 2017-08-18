@@ -6,9 +6,7 @@ module V1
     def show
       user = User.find(params[:id])
       profile = user.profile
-      render json: {
-        profile: profile
-      }
+      render json: { profile: profile }
     end
 
     # GET /users/:id/near_by_users
@@ -34,11 +32,11 @@ module V1
     def edit; end
 
     def update
-      if current_user.profile.present? && current_user.profile.update_attributes(profile_params)
-        message = t('user.update')
-      else
-        message = t('user.unable_to_update')
-      end
+      message = if current_user.profile.present? && current_user.profile.update_attributes(profile_params)
+                  t('user.update')
+                else
+                  t('user.unable_to_update')
+                end
       render json: {
         user: current_user,
         profile: current_user.profile,
@@ -47,11 +45,11 @@ module V1
     end
 
     def destroy
-      if current_user.destroy
-        message = t('user.delete')
-      else
-        message = t('user.unable_to_delete')
-      end
+      message = if current_user.destroy
+                  t('user.delete')
+                else
+                  t('user.unable_to_delete')
+                end
       render json: { message: message }
     end
 
@@ -82,7 +80,9 @@ module V1
                                       :locale,
                                       :avatar,
                                       :latitude,
-                                      :longitude)
+                                      :longitude,
+                                      :recent_location1,
+                                      :recent_location2)
     end
   end
 end
