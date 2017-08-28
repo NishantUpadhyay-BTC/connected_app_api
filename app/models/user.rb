@@ -13,6 +13,7 @@ class User < ApplicationRecord
                                   foreign_key: 'follower_id',
                                   dependent:   :destroy
   has_many :favorites, through: :active_relationships, source: :followed
+  validates_uniqueness_of :uid
   validates_presence_of   :email, if: :email_required?
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
   validates_uniqueness_of :email, allow_blank: true
