@@ -72,6 +72,10 @@ class User < ApplicationRecord
     false
   end
 
+  def email_changed?
+    false
+  end
+
   private
 
   def point(location_details)
