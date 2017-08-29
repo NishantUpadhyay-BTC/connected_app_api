@@ -12,6 +12,7 @@ module V1
         user_favorites << {
           user_id: user.id,
           name: user.username,
+          avatar: 'http://www.botreetechnologies.com/img/logo-white.png',
           favorited_at: relationship.created_at
         }
       end
