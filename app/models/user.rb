@@ -39,7 +39,9 @@ class User < ApplicationRecord
                        .reject{ |profile| profile.user_id == id }
     profiles = []
     user_profiles_within_location.each do |profile|
-      profiles << profile.basic_details
+      user_profile = profile.basic_details
+      user_profile[:favorited] = self.favorites.pluck(:id).include?(user_profile[:user_id])
+      profiles << user_profile
     end
     profiles
   end
