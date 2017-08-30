@@ -1,12 +1,12 @@
 module V1
   class UsersController < ApplicationController
     before_action :authenticate, except: %i[terms_of_use data_protection]
-    before_action :set_user, only: %i[near_by_users update_location]
+    before_action :set_user, only: %i[near_by_users update_location show]
 
     def show
-      user = User.find(params[:id])
-      profile = user.profile
-      render json: { profile: profile }
+      profile_details = @user.profile.as_json
+      profile_details["favorited"] = current_user.favorited?(@user)
+      render json: { profile: profile_details }
     end
 
     # GET /users/:id/near_by_users
