@@ -1,7 +1,7 @@
 require 'fcm'
 class NotificationService
   def self.send_notification(device_token)
-    fcm_client.send([device_token], { 'priority': 'high', 'notification': notification_json})
+    fcm_client.send([device_token], { priority: 'high', notification: notification_json})
   end
 
   def self.fcm_client
@@ -9,6 +9,6 @@ class NotificationService
   end
 
   def self.notification_json
-    { 'body': 'c1', 'title': 'c11' }
+    { body: I18n.t('user.notification') }
   end
 end

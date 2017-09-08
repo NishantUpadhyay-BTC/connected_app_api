@@ -5,6 +5,7 @@ en:
     delete: 'User deleted successfully.'
     unable_to_delete: 'Unable to delete this user.'
     not_found: 'No user found.'
+    notification: 'Someone has noticed your profile.'
   favorite:
     add: 'User added to your favorites list.'
     unable_to_add: 'Unable to favorite this user.'

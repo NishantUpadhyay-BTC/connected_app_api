@@ -5,6 +5,7 @@ zh-CN:
     delete: "用户已成功删除。"
     unable_to_delete: "无法删除此用户。"
     not_found: "找不到用户"
+    notification: '有人注意到你的个人资料。'
   favorite:
     add: "用户已添加到收藏夹列表。"
     unable_to_add: "无法收藏此用户。"

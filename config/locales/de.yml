@@ -1,10 +1,11 @@
-en:
+de:
   user:
     update: 'Benutzer wurde erfolgreich aktualisiert.'
     unable_to_update: 'Dieser Benutzer kann nicht aktualisiert werden.'
     delete: 'Benutzer wurde erfolgreich gelöscht.'
     unable_to_delete: 'Dieser Benutzer konnte nicht gelöscht werden.'
     not_found: 'Kein Benutzer gefunden'
+    notification: 'Jemand hat Ihr Profil bemerkt.'
   favorite:
     add: 'Benutzer zur Favoritenliste hinzugefügt.'
     unable_to_add: 'Dieser Benutzer kann nicht freigeben.'

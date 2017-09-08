@@ -7,6 +7,7 @@ module V1
       profile_details = @user.profile.as_json
       profile_details["favorited"] = current_user.favorited?(@user)
       render json: { profile: profile_details }
+      NotificationService.send_notification(@user.device_id)
     end
 
     # GET /users/:id/near_by_users
@@ -32,7 +33,7 @@ module V1
     def edit; end
 
     def update
-      message = if current_user.profile.present? && current_user.profile.update_attributes(profile_params)
+      message = if current_user.profile.present? && (current_user.profile.update_attributes(profile_params) || current_user.update_attributes(user_params))
                   t('user.update')
                 else
                   t('user.unable_to_update')
@@ -83,6 +84,10 @@ module V1
                                       :longitude,
                                       :recent_location1,
                                       :recent_location2)
+    end
+
+    def user_params
+      params.require(:user).permit(:device_id)
     end
   end
 end

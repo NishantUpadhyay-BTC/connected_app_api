@@ -5,6 +5,7 @@ es:
     delete: 'El usuario se eliminó correctamente.'
     unable_to_delete: 'No se puede eliminar este usuario.'
     not_found: 'Usuario no encontrado.'
+    notification: 'Alguien ha notado su perfil.'
   favorite:
     add: 'Usuario agregado a su lista de favoritos.'
     unable_to_add: 'No se puede favorecer a este usuario.'
