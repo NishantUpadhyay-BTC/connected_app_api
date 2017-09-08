@@ -5,7 +5,7 @@ fr:
     delete: "L'utilisateur a été supprimé avec succès."
     unable_to_delete: 'Impossible de supprimer cet utilisateur.'
     not_found: 'Aucun utilisateur trouvé.'
-    notification: 'Quelqu'un a remarqué votre profil.'
+    notification: "Quelqu'un a remarqué votre profil."
   favorite:
     add: 'Utilisateur ajouté à votre liste de favoris.'
     unable_to_add: 'Impossible de favoriser cet utilisateur.'
