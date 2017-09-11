@@ -6,6 +6,8 @@ class ApiConstraint
   end
 
   def matches?(request)
+    puts "request Headers >>>>>>>> #{request.headers}"
+    Rails.logger.info "request Headers >>>>>>>> #{request.headers}" 
     return true if request.url.match(/terms_of_use|data_protection/)
     request
       .headers
