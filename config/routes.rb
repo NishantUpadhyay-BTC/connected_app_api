@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
   scope module: :v1, constraints: ApiConstraint.new(version: 1) do
+    get '/test_check_get' => 'users#test_check_get'
+    post '/test_check_post' => 'users#test_check_post'
+
     devise_for :users, controllers: {
       sessions: 'v1/users/sessions',
       registrations: 'v1/users/registrations',

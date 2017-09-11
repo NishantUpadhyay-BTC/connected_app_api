@@ -1,7 +1,29 @@
 module V1
   class UsersController < ApplicationController
-    before_action :authenticate, except: %i[terms_of_use data_protection]
+    before_action :authenticate, except: %i[terms_of_use data_protection test_check_post test_check_get]
     before_action :set_user, only: %i[near_by_users update_location show]
+
+    def test_check_get
+      respond_to do |format|
+        format.json do
+          render json: {
+            data: { success: 1 }
+          }
+        end
+      end
+
+    end
+
+    def test_check_post
+      respond_to do |format|
+        format.json do
+          render json: {
+            data: { success: 2 }
+          }
+        end
+      end
+
+    end
 
     def show
       profile_details = @user.profile.as_json
