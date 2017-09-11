@@ -1,0 +1,14 @@
+es:
+  user:
+    update: 'Usuario actualizado correctamente.'
+    unable_to_update: 'No se puede actualizar este usuario.'
+    delete: 'El usuario se eliminó correctamente.'
+    unable_to_delete: 'No se puede eliminar este usuario.'
+    not_found: 'Usuario no encontrado.'
+    notification: 'Alguien ha notado su perfil.'
+  favorite:
+    add: 'Usuario agregado a su lista de favoritos.'
+    unable_to_add: 'No se puede favorecer a este usuario.'
+    remove: 'El usuario se elimina de la lista de favoritos.'
+    unable_to_remove: 'No se puede eliminar el usuario de la lista de favoritos.'
+    not_favorited: 'El usuario no es favorito.'

@@ -1,0 +1,15 @@
+de:
+  user:
+    update: 'Benutzer wurde erfolgreich aktualisiert.'
+    unable_to_update: 'Dieser Benutzer kann nicht aktualisiert werden.'
+    delete: 'Benutzer wurde erfolgreich gelöscht.'
+    unable_to_delete: 'Dieser Benutzer konnte nicht gelöscht werden.'
+    not_found: 'Kein Benutzer gefunden'
+    notification: 'Jemand hat Ihr Profil bemerkt.'
+  favorite:
+    add: 'Benutzer zur Favoritenliste hinzugefügt.'
+    unable_to_add: 'Dieser Benutzer kann nicht freigeben.'
+    remove: 'Benutzer wird aus der Favoritenliste entfernt.'
+    unable_to_remove: 'Der Benutzer kann nicht aus der Favoritenliste entfernt
+      werden.'
+    not_favorited: 'Benutzer ist nicht bevorzugt.'
