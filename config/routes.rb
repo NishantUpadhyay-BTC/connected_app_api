@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'profiles/show'
 
   root 'home#index'
-  scope module: :v1, constraints: ApiConstraint.new(version: 1) do
+  scope module: :v1, constraints: ApiConstraint.new(version1: 1) do
     get '/test_check_get' => 'users#test_check_get'
     post '/test_check_post' => 'users#test_check_post'
 

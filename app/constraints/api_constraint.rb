@@ -1,19 +1,14 @@
 class ApiConstraint
-  attr_reader :version
+  attr_reader :version1
 
   def initialize(options)
-    @version = options.fetch(:version)
+    @version1 = options.fetch(:version1)
   end
 
   def matches?(request)
-    puts "request Headers >>>>>>>> #{request.headers.fetch(:version)}"
-    Rails.logger.info "request Headers >>>>>>>> #{request.headers.fetch(:version)}"
+    Rails.logger.info "request Headers >>>>>>>> #{request.headers.fetch(:version1)}"
+    Rails.logger.info "request Headers >>>>>>>> #{request.headers.fetch("Authorization")}"
     return true if request.url.match(/terms_of_use|data_protection/)
-    request
-      .headers
-      .fetch(:version)
-      .split(', ')
-      .last
-      .eql?(version.to_s)
+    request.headers.fetch(:version1).split(', ').last.eql?(version1.to_s)
   end
 end
